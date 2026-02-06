@@ -52,7 +52,7 @@ local function startTrainLoop()
                 warn("Erro ao executar Click:", errClick)
             end
 
-            task.wait(1) -- intervalo de 1 segundo
+            task.wait(0) 
         end
         loopTrain = nil
     end)
@@ -80,7 +80,7 @@ local function startClaimLoop()
                 warn("Erro ao executar Claim:", result)
             end
 
-            task.wait(10) -- intervalo de 10 segundos
+            task.wait(600)
         end
         loopClaim = nil
     end)
