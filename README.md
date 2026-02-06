@@ -11,7 +11,7 @@ local toolService = ReplicatedStorage
 local onEquipRequest = toolService:WaitForChild("onEquipRequest")
 local onClick = toolService:WaitForChild("onClick")
 
--- GiftMachine Remotes
+-- GiftMachine Remotess
 local giftService = ReplicatedStorage
     :WaitForChild("Packages")
     :WaitForChild("Knit")
