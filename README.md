@@ -52,7 +52,7 @@ local function startTrainLoop()
                 warn("Erro ao executar Click:", errClick)
             end
 
-            task.wait(0) -- intervalo de 1 segundo
+            task.wait(1) -- intervalo de 1 segundo
         end
         loopTrain = nil
     end)
@@ -80,7 +80,7 @@ local function startClaimLoop()
                 warn("Erro ao executar Claim:", result)
             end
 
-            task.wait(600) -- intervalo de 10 segundos
+            task.wait(10) -- intervalo de 10 segundos
         end
         loopClaim = nil
     end)
@@ -89,6 +89,8 @@ end
 local function stopClaimLoop()
     runningClaim = false
 end
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 -- Fluent GUI
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
@@ -102,10 +104,17 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
+
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
+
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+SaveManager:BuildConfigSection(Tabs.Settings)
 
 -- Toggle AutoTrain
 local ToggleTrain = Tabs.Main:AddToggle("AutoTrain", {
